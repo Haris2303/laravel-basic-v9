@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/pzn', function () {
+    return "Hello Programmer Zaman Now";
+});
+
+Route::redirect('/youtube', '/pzn');
+
+// make a view 404
+Route::fallback(function () {
+    return "404 Page Not Found";
+});
