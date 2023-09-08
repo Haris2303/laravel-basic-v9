@@ -23,6 +23,14 @@ Route::get('/pzn', function () {
 
 Route::redirect('/youtube', '/pzn');
 
+Route::view('/hello', 'hello', ['name' => 'Haris']);
+Route::get('/hello-again', function () {
+    return view('hello', ['name' => 'Ilham']);
+});
+Route::get('/hello-world', function () {
+    return view('hello.world', ['name' => 'Minecraft']);
+});
+
 // make a view 404
 Route::fallback(function () {
     return "404 Page Not Found";
