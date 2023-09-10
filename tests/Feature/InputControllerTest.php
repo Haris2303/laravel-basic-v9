@@ -56,4 +56,15 @@ class InputControllerTest extends TestCase
         ])->assertSeeText('OPPO A5 2020')
             ->assertSeeText('POCO PHONE F5');
     }
+
+    public function testInputType()
+    {
+        $this->post('/input/type', [
+            'name' => 'Udin',
+            'married' => 'false',
+            'birth_date' => '2000-10-20'
+        ])->assertSeeText('Udin')
+            ->assertSeeText(false)
+            ->assertSeeText('2000-10-20');
+    }
 }
