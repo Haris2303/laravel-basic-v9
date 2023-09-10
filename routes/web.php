@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CookieController;
+use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\ResponseController;
 use Illuminate\Support\Facades\Route;
 
@@ -102,3 +103,10 @@ Route::get('/response/type/download', [ResponseController::class, 'responseDownl
 Route::get('/cookie/set', [CookieController::class, 'createCookie']);
 Route::get('/cookie/get', [CookieController::class, 'getCookie']);
 Route::get('/cookie/clear', [CookieController::class, 'clearCookie']);
+
+Route::get('/redirect/from', [RedirectController::class, 'redirectFrom']);
+Route::get('/redirect/to', [RedirectController::class, 'redirectTo']);
+Route::get('/redirect/name', [RedirectController::class, 'redirectName']);
+Route::get('/redirect/name/{name}', [RedirectController::class, 'redirectHello'])->name('redirect-hello');
+Route::get('/redirect/action', [RedirectController::class, 'redirectAction']);
+Route::get('/redirect/away', [RedirectController::class, 'redirectAway']);
