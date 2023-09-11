@@ -117,6 +117,11 @@ Route::controller(RedirectController::class)->group(function () {
     Route::get('/redirect/name/{name}', 'redirectHello')->name('redirect-hello');
     Route::get('/redirect/action', 'redirectAction');
     Route::get('/redirect/away', 'redirectAway');
+    Route::get('/redirect/named', function () {
+        // return route('redirect-hello', ['name' => 'Udin']);
+        // return url()->route('redirect-hello', ['name' => 'Udin']);
+        return Illuminate\Support\Facades\URL::route('redirect-hello', ['name' => 'Udin']);
+    });
 });
 
 // Grouping routes multiple middleware and prefix
@@ -130,6 +135,14 @@ Route::middleware('contoh:UDIN-TAMVAN,401')->prefix('/middleware')->group(functi
     });
 });
 
-
 Route::get('/form', [App\Http\Controllers\FormController::class, 'form']);
 Route::post('/form', [App\Http\Controllers\FormController::class, 'submit']);
+
+Route::get('/url/current', function () {
+    return Illuminate\Support\Facades\URL::full();
+});
+Route::get('/url/action', function () {
+    // return action([App\Http\Controllers\FormController::class, 'form'], []);
+    // return url()->action([App\Http\Controllers\FormController::class, 'form'], []);
+    return Illuminate\Support\Facades\URL::action([App\Http\Controllers\FormController::class, 'form'], []);
+});
